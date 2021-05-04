@@ -6,8 +6,15 @@ function setup() {
     player = new Player("blue");
 }
 
+function keyPressed() {
+    if (key === " ") {
+        player.jump();
+    }
+}
+
 function draw() {
     background("skyblue");
     ground.show();
     player.show();
+    player.move();
 }

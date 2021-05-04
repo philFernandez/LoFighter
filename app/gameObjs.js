@@ -1,3 +1,4 @@
+const GRAVITY = 0.3;
 class Ground {
     constructor(groundHeight, color) {
         this.groundHeight = groundHeight;
@@ -22,6 +23,22 @@ class Player {
         this.x = 220;
         this.diameter = 70;
         this.y = height - groundHeight - this.diameter / 2;
+        this.velocityY = 0;
+    }
+
+    jump() {
+        if (this.y === height - groundHeight - this.diameter / 2)
+            this.velocityY = -10;
+    }
+
+    move() {
+        this.y += this.velocityY;
+        this.velocityY += GRAVITY;
+        this.y = constrain(
+            this.y,
+            0,
+            height - groundHeight - this.diameter / 2
+        );
     }
 
     show() {
