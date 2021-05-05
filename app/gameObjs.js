@@ -39,6 +39,15 @@ class Player {
         this.diameter = 70;
         this.y = height - groundHeight - this.diameter / 2;
         this.velocityY = 0;
+        this.playerSprite = new Sprite(
+            spriteSheet,
+            spriteData,
+            0.2,
+            this.x,
+            this.y,
+            this.diameter,
+            this.diameter
+        );
     }
 
     jump() {
@@ -54,11 +63,17 @@ class Player {
             0,
             height - groundHeight - this.diameter / 2
         );
+        this.playerSprite.setY(this.y);
     }
 
     show() {
-        fill(this.color);
+        ellipseMode(CORNER);
+        noFill();
+        stroke("black");
+        strokeWeight(5);
         circle(this.x, this.y, this.diameter);
+        this.playerSprite.show();
+        this.playerSprite.animate();
     }
 }
 
