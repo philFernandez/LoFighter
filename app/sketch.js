@@ -14,11 +14,18 @@ function setup() {
     ground = new Ground(groundHeight, "forestgreen");
     player = new Player("blue");
     obby = new Obstacle("purple");
+    noLoop();
 }
 
 function keyPressed() {
     if (key === " ") {
         player.jump();
+    }
+    if (key === "u") {
+        loop();
+    }
+    if (key === "p") {
+        noLoop();
     }
 }
 
