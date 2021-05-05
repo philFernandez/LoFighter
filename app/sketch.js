@@ -5,14 +5,16 @@ let spriteData;
 let spriteSheet;
 
 function preload() {
-    spriteData = loadJSON("../sprites/texture.json");
-    spriteSheet = loadImage("../sprites/texture.png");
+    // spriteData = loadJSON("../sprites/texture.json");
+    // spriteSheet = loadImage("../sprites/texture.png");
+    spriteData = loadJSON("../sprites/run/run.json");
+    spriteSheet = loadImage("../sprites/run/run.png");
 }
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight - 1);
     ground = new Ground(groundHeight, "forestgreen");
-    player = new Player("blue");
+    player = new Player();
     obby = new Obstacle("purple");
 }
 

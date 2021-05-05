@@ -33,10 +33,9 @@ class Obstacle {
 }
 
 class Player {
-    constructor(color) {
-        this.color = color;
+    constructor() {
         this.x = 90;
-        this.diameter = 70;
+        this.diameter = 170;
         this.y = height - groundHeight - this.diameter / 2;
         this.velocityY = 0;
         this.playerSprite = new Sprite(
@@ -67,9 +66,17 @@ class Player {
     }
 
     show() {
-        ellipseMode(CORNER);
+        let boundaryOffset = this.diameter / 2;
+        // ellipseMode(CORNER);
         noFill();
-        circle(this.x, this.y, this.diameter);
+        // rectMode(CORNERS);
+        stroke("black");
+        rect(
+            this.x + boundaryOffset / 2,
+            this.y,
+            this.diameter - boundaryOffset,
+            this.diameter
+        );
         this.playerSprite.show();
         this.playerSprite.animate();
     }
