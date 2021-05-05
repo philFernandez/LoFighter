@@ -69,8 +69,6 @@ class Player {
     show() {
         ellipseMode(CORNER);
         noFill();
-        stroke("black");
-        strokeWeight(5);
         circle(this.x, this.y, this.diameter);
         this.playerSprite.show();
         this.playerSprite.animate();
