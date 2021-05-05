@@ -1,0 +1,165 @@
+{
+    "frames": [
+        {
+            "filename": "adventurer-run3-00.png",
+            "frame": {
+                "x": 0,
+                "y": 28,
+                "w": 24,
+                "h": 28
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 12,
+                "y": 8,
+                "w": 24,
+                "h": 28
+            },
+            "sourceSize": {
+                "w": 50,
+                "h": 37
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "adventurer-run3-01.png",
+            "frame": {
+                "x": 0,
+                "y": 56,
+                "w": 23,
+                "h": 27
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 13,
+                "y": 9,
+                "w": 23,
+                "h": 27
+            },
+            "sourceSize": {
+                "w": 50,
+                "h": 37
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "adventurer-run3-02.png",
+            "frame": {
+                "x": 0,
+                "y": 110,
+                "w": 23,
+                "h": 25
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 13,
+                "y": 11,
+                "w": 23,
+                "h": 25
+            },
+            "sourceSize": {
+                "w": 50,
+                "h": 37
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "adventurer-run3-03.png",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 27,
+                "h": 28
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 13,
+                "y": 8,
+                "w": 27,
+                "h": 28
+            },
+            "sourceSize": {
+                "w": 50,
+                "h": 37
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "adventurer-run3-04.png",
+            "frame": {
+                "x": 0,
+                "y": 83,
+                "w": 23,
+                "h": 27
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 13,
+                "y": 9,
+                "w": 23,
+                "h": 27
+            },
+            "sourceSize": {
+                "w": 50,
+                "h": 37
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "adventurer-run3-05.png",
+            "frame": {
+                "x": 0,
+                "y": 135,
+                "w": 22,
+                "h": 25
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 14,
+                "y": 11,
+                "w": 22,
+                "h": 25
+            },
+            "sourceSize": {
+                "w": 50,
+                "h": 37
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "app": "http://free-tex-packer.com",
+        "version": "0.6.7",
+        "image": "texture.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 27,
+            "h": 160
+        },
+        "scale": 1
+    }
+}
