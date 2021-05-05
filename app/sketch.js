@@ -7,6 +7,9 @@ let spriteSheet;
 function preload() {
     spriteData = loadJSON("../sprites/run/run.json");
     spriteSheet = loadImage("../sprites/run/run.png");
+
+    spriteData = loadJSON("../sprites/idle/idle.json");
+    spriteSheet = loadImage("../sprites/idle/idle.png");
 }
 
 function setup() {
@@ -42,9 +45,9 @@ function draw() {
     player.show();
     player.move();
     counter++;
-    if (random() <= 0.005 && counter >= 75) {
-        newObbie();
-        counter = 0;
-    }
-    obbies.forEach((obby) => obby.show());
+    // if (random() <= 0.005 && counter >= 75) {
+    //     newObbie();
+    //     counter = 0;
+    // }
+    // obbies.forEach((obby) => obby.show());
 }
