@@ -33,8 +33,7 @@ class Obstacle {
 }
 
 class Player {
-    constructor(color) {
-        this.color = color;
+    constructor(spriteSheet, spriteData) {
         this.x = 90;
         this.diameter = 70;
         this.y = height - groundHeight - this.diameter / 2;

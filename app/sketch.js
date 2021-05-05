@@ -1,28 +1,36 @@
 const groundHeight = 60;
-let ground, player;
+let ground, runningPlayer, idlePlayer;
 let counter = 0;
-let spriteData;
-let spriteSheet;
+let spriteDataRun;
+let spriteSheetRun;
+let spriteDataIdle;
+let spriteSheetIdle;
+let playerIsIdle = true;
 
 function preload() {
-    spriteData = loadJSON("../sprites/run/run.json");
-    spriteSheet = loadImage("../sprites/run/run.png");
+    spriteDataRun = loadJSON("../sprites/run/run.json");
+    spriteSheetRun = loadImage("../sprites/run/run.png");
 
-    spriteData = loadJSON("../sprites/idle/idle.json");
-    spriteSheet = loadImage("../sprites/idle/idle.png");
+    spriteDataIdle = loadJSON("../sprites/idle/idle.json");
+    spriteSheetIdle = loadImage("../sprites/idle/idle.png");
 }
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight - 1);
     ground = new Ground(groundHeight, "forestgreen");
-    player = new Player("blue");
+    runningPlayer = new Player(spriteSheetRun, spriteDataRun);
+    idlePlayer = new Player(spriteSheetIdle, spriteDataIdle);
     obby = new Obstacle("purple");
     noLoop();
 }
 
 function keyPressed() {
     if (key === " ") {
-        player.jump();
+        if (playerIsIdle) {
+            idlePlayer.jump();
+        } else {
+            runningPlayer.jump();
+        }
     }
     if (key === "u") {
         loop();
@@ -30,6 +38,7 @@ function keyPressed() {
     if (key === "p") {
         noLoop();
     }
+    console.log(keyCode);
 }
 
 let obbies = [];
@@ -39,15 +48,24 @@ function newObbie() {
     obbies.push(new Obstacle(color));
 }
 
+// d = 68
+// a = 65
 function draw() {
     background("skyblue");
     ground.show();
-    player.show();
-    player.move();
     counter++;
-    // if (random() <= 0.005 && counter >= 75) {
-    //     newObbie();
-    //     counter = 0;
-    // }
-    // obbies.forEach((obby) => obby.show());
+    if (keyIsDown(68)) {
+        playerIsIdle = false;
+        runningPlayer.show();
+        runningPlayer.move();
+        if (random() <= 0.005 && counter >= 75) {
+            newObbie();
+            counter = 0;
+        }
+        obbies.forEach((obby) => obby.show());
+    } else {
+        playerIsIdle = true;
+        idlePlayer.show();
+        idlePlayer.move();
+    }
 }
