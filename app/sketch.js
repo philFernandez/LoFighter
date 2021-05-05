@@ -5,8 +5,8 @@ let spriteData;
 let spriteSheet;
 
 function preload() {
-    spriteData = loadJSON("../sprites/texture.json");
-    spriteSheet = loadImage("../sprites/texture.png");
+    spriteData = loadJSON("../sprites/run/run.json");
+    spriteSheet = loadImage("../sprites/run/run.png");
 }
 
 function setup() {
