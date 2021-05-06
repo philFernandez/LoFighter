@@ -4,8 +4,9 @@ let counter = 0;
 let playerSprites;
 let player;
 let gamePaused = false;
+let cloudSprite;
+let clouds;
 const gameOver = document.querySelector("div");
-console.log(gameOver);
 
 function preload() {
     playerSprites = {
@@ -18,6 +19,7 @@ function preload() {
             data: loadJSON("../sprites/idle/idle.json"),
         },
     };
+    cloudSprite = loadImage("../sprites/clouds/clouds.png");
 }
 
 function setup() {
@@ -25,6 +27,7 @@ function setup() {
     ground = new Ground(groundHeight, "forestgreen");
     player = new Player(playerSprites);
     obby = new Obstacle("purple");
+    clouds = new Clouds(cloudSprite);
 }
 
 function keyPressed() {
@@ -54,13 +57,15 @@ function draw() {
     background("skyblue");
     ground.show();
     counter++;
+    let deadObbies = [];
+    // player is running
     if (keyIsDown(68)) {
         player.showRunning();
         if (random() <= 0.005 && counter >= 75) {
             newObbie();
             counter = 0;
         }
-        obbies.forEach((obby) => {
+        obbies.forEach((obby, idx) => {
             obby.show();
             obby.move();
             let obbyPos = obby.getPos();
@@ -80,7 +85,12 @@ function draw() {
                 document.body.style.backgroundColor = "black";
                 noLoop();
             }
+            if (obbyPos.x < -40) {
+                deadObbies.push(idx);
+            }
         });
+        clouds.show();
+        clouds.move(0.8);
     } else {
         player.showIdle();
         obbies.forEach((obby) => {
@@ -103,6 +113,12 @@ function draw() {
                 noLoop();
             }
         });
+        clouds.show();
+        clouds.move(0.1);
     }
     player.move();
+    // Remove obbies that are no longer on screen
+    deadObbies.forEach((deadObby) => {
+        obbies.splice(deadObby, 1);
+    });
 }

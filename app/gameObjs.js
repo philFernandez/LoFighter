@@ -16,6 +16,24 @@ class Ground {
         return this.groundHeight;
     }
 }
+
+class Clouds {
+    constructor(cloudImg) {
+        this.x = width;
+        this.y = random(0, height / 2);
+        this.img = cloudImg;
+    }
+    move(speed) {
+        this.x -= speed;
+        if (this.x < -200) {
+            this.x = width + 40;
+            this.y = random(0, height / 2);
+        }
+    }
+    show() {
+        image(this.img, this.x, this.y);
+    }
+}
 class Obstacle {
     constructor(color) {
         this.color = color;
