@@ -33,6 +33,10 @@ class Obstacle {
         fill(this.color);
         circle(this.x, this.y, this.diameter);
     }
+
+    getPos() {
+        return { x: this.x, y: this.y, d: this.diameter };
+    }
 }
 
 /**
@@ -70,7 +74,7 @@ class Player {
     }
 
     jump() {
-        if (this.y === height - groundHeight - this.diameter)
+        if (this.circleY === height - groundHeight - this.diameter / 2)
             this.velocityY = -10;
     }
 
@@ -103,6 +107,10 @@ class Player {
         circle(this.circleX, this.circleY, this.diameter);
         this.player.idle.show();
         this.player.idle.animate();
+    }
+
+    getPos() {
+        return { x: this.circleX, y: this.circleY, d: this.diameter };
     }
 }
 
