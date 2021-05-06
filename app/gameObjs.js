@@ -25,16 +25,18 @@ class Obstacle {
         this.velocityX = -5;
     }
 
+    move() {
+        this.x -= 4;
+    }
+
     show() {
         fill(this.color);
         circle(this.x, this.y, this.diameter);
-        this.x -= 4;
     }
 }
 
 class Player {
     constructor(sprites) {
-        this.playerIsIdle = true;
         this.x = 90;
         this.diameter = 70;
         this.y = height - groundHeight - this.diameter / 2;
@@ -80,7 +82,6 @@ class Player {
     }
 
     showRunning() {
-        this.playerIsIdle = false;
         ellipseMode(CORNER);
         noFill();
         // stroke("black");
@@ -90,7 +91,6 @@ class Player {
     }
 
     showIdle() {
-        this.playerIsIdle = true;
         ellipseMode(CORNER);
         noFill();
         // stroke("black");

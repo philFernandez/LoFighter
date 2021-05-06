@@ -22,7 +22,6 @@ function setup() {
     ground = new Ground(groundHeight, "forestgreen");
     player = new Player(playerSprites);
     obby = new Obstacle("purple");
-    noLoop();
 }
 
 function keyPressed() {
@@ -56,9 +55,15 @@ function draw() {
             newObbie();
             counter = 0;
         }
-        obbies.forEach((obby) => obby.show());
+        obbies.forEach((obby) => {
+            obby.show();
+            obby.move();
+        });
     } else {
         player.showIdle();
+        obbies.forEach((obby) => {
+            obby.show();
+        });
     }
     player.move();
 }
