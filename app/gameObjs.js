@@ -33,20 +33,32 @@ class Obstacle {
 }
 
 class Player {
-    constructor(spriteSheet, spriteData) {
+    constructor(sprites) {
+        this.playerIsIdle = true;
         this.x = 90;
         this.diameter = 70;
         this.y = height - groundHeight - this.diameter / 2;
         this.velocityY = 0;
-        this.playerSprite = new Sprite(
-            spriteSheet,
-            spriteData,
-            0.2,
-            this.x,
-            this.y,
-            this.diameter,
-            this.diameter
-        );
+        this.player = {
+            running: new Sprite(
+                sprites.run.sheet,
+                sprites.run.data,
+                0.2,
+                this.x,
+                this.y,
+                this.diameter,
+                this.diameter
+            ),
+            idle: new Sprite(
+                sprites.idle.sheet,
+                sprites.idle.data,
+                0.2,
+                this.x,
+                this.y,
+                this.diameter,
+                this.diameter
+            ),
+        };
     }
 
     jump() {
@@ -62,16 +74,29 @@ class Player {
             0,
             height - groundHeight - this.diameter / 2
         );
-        this.playerSprite.setY(this.y);
+        // Always move both idle and running so mid-jump trasition between states is smooth
+        this.player.idle.setY(this.y);
+        this.player.running.setY(this.y);
     }
 
-    show() {
+    showRunning() {
+        this.playerIsIdle = false;
         ellipseMode(CORNER);
         noFill();
         // stroke("black");
         circle(this.x, this.y, this.diameter);
-        this.playerSprite.show();
-        this.playerSprite.animate();
+        this.player.running.show();
+        this.player.running.animate();
+    }
+
+    showIdle() {
+        this.playerIsIdle = true;
+        ellipseMode(CORNER);
+        noFill();
+        // stroke("black");
+        circle(this.x, this.y, this.diameter);
+        this.player.idle.show();
+        this.player.idle.animate();
     }
 }
 

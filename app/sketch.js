@@ -1,36 +1,33 @@
 const groundHeight = 60;
 let ground, runningPlayer, idlePlayer;
 let counter = 0;
-let spriteDataRun;
-let spriteSheetRun;
-let spriteDataIdle;
-let spriteSheetIdle;
-let playerIsIdle = true;
+let playerSprites;
+let player;
 
 function preload() {
-    spriteDataRun = loadJSON("../sprites/run/run.json");
-    spriteSheetRun = loadImage("../sprites/run/run.png");
-
-    spriteDataIdle = loadJSON("../sprites/idle/idle.json");
-    spriteSheetIdle = loadImage("../sprites/idle/idle.png");
+    playerSprites = {
+        run: {
+            sheet: loadImage("../sprites/run/run.png"),
+            data: loadJSON("../sprites/run/run.json"),
+        },
+        idle: {
+            sheet: loadImage("../sprites/idle/idle.png"),
+            data: loadJSON("../sprites/idle/idle.json"),
+        },
+    };
 }
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight - 1);
     ground = new Ground(groundHeight, "forestgreen");
-    runningPlayer = new Player(spriteSheetRun, spriteDataRun);
-    idlePlayer = new Player(spriteSheetIdle, spriteDataIdle);
+    player = new Player(playerSprites);
     obby = new Obstacle("purple");
     noLoop();
 }
 
 function keyPressed() {
     if (key === " ") {
-        if (playerIsIdle) {
-            idlePlayer.jump();
-        } else {
-            runningPlayer.jump();
-        }
+        player.jump();
     }
     if (key === "u") {
         loop();
@@ -38,7 +35,6 @@ function keyPressed() {
     if (key === "p") {
         noLoop();
     }
-    console.log(keyCode);
 }
 
 let obbies = [];
@@ -55,17 +51,14 @@ function draw() {
     ground.show();
     counter++;
     if (keyIsDown(68)) {
-        playerIsIdle = false;
-        runningPlayer.show();
-        runningPlayer.move();
+        player.showRunning();
         if (random() <= 0.005 && counter >= 75) {
             newObbie();
             counter = 0;
         }
         obbies.forEach((obby) => obby.show());
     } else {
-        playerIsIdle = true;
-        idlePlayer.show();
-        idlePlayer.move();
+        player.showIdle();
     }
+    player.move();
 }
