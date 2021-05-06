@@ -3,6 +3,7 @@ let ground, runningPlayer, idlePlayer;
 let counter = 0;
 let playerSprites;
 let player;
+let gamePaused = false;
 
 function preload() {
     playerSprites = {
@@ -28,11 +29,13 @@ function keyPressed() {
     if (key === " ") {
         player.jump();
     }
-    if (key === "u") {
-        loop();
-    }
     if (key === "p") {
-        noLoop();
+        gamePaused = !gamePaused;
+        if (gamePaused) {
+            noLoop();
+        } else {
+            loop();
+        }
     }
 }
 
