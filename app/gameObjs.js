@@ -35,12 +35,18 @@ class Obstacle {
     }
 }
 
+/**
+ * Only adjust the circleX and circleY when changing hardcoded values. Changing those will also make the needed
+ * changes to x and y which the player sprites use.
+ */
 class Player {
     constructor(sprites) {
-        this.x = 90;
+        this.circleX = 90;
         this.diameter = 70;
-        this.y = height - groundHeight - this.diameter / 2;
+        this.circleY = height - groundHeight - this.diameter / 2;
         this.velocityY = 0;
+        this.x = this.circleX - this.diameter / 2;
+        this.y = this.circleY - this.diameter / 2;
         this.player = {
             running: new Sprite(
                 sprites.run.sheet,
@@ -64,15 +70,17 @@ class Player {
     }
 
     jump() {
-        if (this.y === height - groundHeight - this.diameter / 2)
+        if (this.y === height - groundHeight - this.diameter)
             this.velocityY = -10;
     }
 
     move() {
         this.y += this.velocityY;
+        this.circleY += this.velocityY;
         this.velocityY += GRAVITY;
-        this.y = constrain(
-            this.y,
+        this.y = constrain(this.y, 0, height - groundHeight - this.diameter);
+        this.circleY = constrain(
+            this.circleY,
             0,
             height - groundHeight - this.diameter / 2
         );
@@ -82,19 +90,17 @@ class Player {
     }
 
     showRunning() {
-        ellipseMode(CORNER);
         noFill();
-        // stroke("black");
-        circle(this.x, this.y, this.diameter);
+        stroke("black");
+        circle(this.circleX, this.circleY, this.diameter);
         this.player.running.show();
         this.player.running.animate();
     }
 
     showIdle() {
-        ellipseMode(CORNER);
         noFill();
-        // stroke("black");
-        circle(this.x, this.y, this.diameter);
+        stroke("black");
+        circle(this.circleX, this.circleY, this.diameter);
         this.player.idle.show();
         this.player.idle.animate();
     }
