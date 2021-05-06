@@ -80,6 +80,20 @@ function draw() {
         player.showIdle();
         obbies.forEach((obby) => {
             obby.show();
+            let obbyPos = obby.getPos();
+            let playerPos = player.getPos();
+            if (
+                collideCircleCircle(
+                    playerPos.x,
+                    playerPos.y,
+                    playerPos.d,
+                    obbyPos.x,
+                    obbyPos.y,
+                    obbyPos.d
+                )
+            ) {
+                noLoop();
+            }
         });
     }
     player.move();
