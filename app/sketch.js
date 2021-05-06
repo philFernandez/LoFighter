@@ -4,6 +4,8 @@ let counter = 0;
 let playerSprites;
 let player;
 let gamePaused = false;
+const gameOver = document.querySelector("div");
+console.log(gameOver);
 
 function preload() {
     playerSprites = {
@@ -73,6 +75,9 @@ function draw() {
                     obbyPos.d
                 )
             ) {
+                noCanvas();
+                gameOver.style.display = "block";
+                document.body.style.backgroundColor = "red";
                 noLoop();
             }
         });
@@ -92,6 +97,9 @@ function draw() {
                     obbyPos.d
                 )
             ) {
+                noCanvas();
+                gameOver.style.display = "block";
+                document.body.style.backgroundColor = "red";
                 noLoop();
             }
         });
