@@ -8,8 +8,15 @@ body {
 
 div {
     display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     font-family: 'Press Start 2P', cursive;
+    height: 99vh;
     width: 100%;
-    margin: auto;
-    text-align: center;
+    color: white;
+}
+
+div h3 a {
+    color: greenyellow;
 }
