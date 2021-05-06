@@ -98,8 +98,8 @@ function draw() {
                 )
             ) {
                 noCanvas();
-                gameOver.style.display = "block";
-                document.body.style.backgroundColor = "red";
+                gameOver.style.display = "flex";
+                document.body.style.backgroundColor = "black";
                 noLoop();
             }
         });
