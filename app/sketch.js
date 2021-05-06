@@ -6,31 +6,43 @@ let player;
 let gamePaused = false;
 let cloudSprite;
 let clouds;
+let backingTrack;
 const gameOver = document.querySelector("div");
 
 function preload() {
+    soundFormats("ogg");
+    backingTrack = loadSound("../assets/sounds/backing.ogg");
     playerSprites = {
         run: {
-            sheet: loadImage("../sprites/run/run.png"),
-            data: loadJSON("../sprites/run/run.json"),
+            sheet: loadImage("../assets/sprites/run/run.png"),
+            data: loadJSON("../assets/sprites/run/run.json"),
         },
         idle: {
-            sheet: loadImage("../sprites/idle/idle.png"),
-            data: loadJSON("../sprites/idle/idle.json"),
+            sheet: loadImage("../assets/sprites/idle/idle.png"),
+            data: loadJSON("../assets/sprites/idle/idle.json"),
         },
     };
-    cloudSprite = loadImage("../sprites/clouds/clouds.png");
+    cloudSprite = loadImage("../assets/sprites/clouds/clouds.png");
 }
 
 function setup() {
+    // console.log(backingTrack);
     createCanvas(window.innerWidth, window.innerHeight - 1);
+    // cnv.mousePressed(canvasPressed);
     ground = new Ground(groundHeight, "forestgreen");
     player = new Player(playerSprites);
     obby = new Obstacle("purple");
     clouds = new Clouds(cloudSprite);
 }
 
+function canvasPressed() {
+    backingTrack.play();
+}
+
 function keyPressed() {
+    if (!backingTrack.isPlaying()) {
+        canvasPressed();
+    }
     if (key === " ") {
         player.jump();
     }
