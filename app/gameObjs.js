@@ -95,7 +95,7 @@ class Player {
 
     showRunning() {
         noFill();
-        stroke("black");
+        // stroke("black");
         circle(this.circleX, this.circleY, this.diameter);
         this.player.running.show();
         this.player.running.animate();
@@ -103,7 +103,7 @@ class Player {
 
     showIdle() {
         noFill();
-        stroke("black");
+        // stroke("black");
         circle(this.circleX, this.circleY, this.diameter);
         this.player.idle.show();
         this.player.idle.animate();
