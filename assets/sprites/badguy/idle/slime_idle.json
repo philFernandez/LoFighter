@@ -1,0 +1,115 @@
+{
+  "frames": [
+    {
+      "filename": "slime-idle-0.png",
+      "frame": {
+        "x": 22,
+        "y": 22,
+        "w": 308,
+        "h": 154
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 22,
+        "y": 110,
+        "w": 308,
+        "h": 154
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 275
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "slime-idle-1.png",
+      "frame": {
+        "x": 374,
+        "y": 22,
+        "w": 308,
+        "h": 154
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 22,
+        "y": 110,
+        "w": 308,
+        "h": 154
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 275
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "slime-idle-2.png",
+      "frame": {
+        "x": 726,
+        "y": 22,
+        "w": 308,
+        "h": 154
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 22,
+        "y": 110,
+        "w": 308,
+        "h": 154
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 275
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "slime-idle-3.png",
+      "frame": {
+        "x": 1078,
+        "y": 22,
+        "w": 308,
+        "h": 143
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 22,
+        "y": 121,
+        "w": 308,
+        "h": 143
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 275
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "slime_idle.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1408,
+      "h": 198
+    },
+    "scale": 11
+  }
+}

@@ -9,6 +9,7 @@ let clouds;
 let mountainSprite;
 let mountain;
 let backingTrack;
+let slimeSprite;
 const gameOver = document.querySelector("div");
 
 function preload() {
@@ -26,15 +27,20 @@ function preload() {
     };
     cloudSprite = loadImage("../assets/sprites/clouds/clouds.png");
     mountainSprite = loadImage("../assets/sprites/mountains/mtn1.png");
+    slimeSprite = {
+        sheet: loadImage("../assets/sprites/badguy/idle/slime_idle.png"),
+        data: loadJSON("../assets/sprites/badguy/idle/slime_idle.json"),
+    };
 }
 
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight - 1);
     ground = new Ground(groundHeight, "forestgreen");
     player = new Player(playerSprites);
-    obby = new Obstacle("purple");
+    // obby = new Obstacle(slimeSprite);
     clouds = new Clouds(cloudSprite);
     mountain = new Mountain(mountainSprite);
+    console.log(slimeSprite);
 }
 
 function canvasPressed() {
@@ -60,9 +66,9 @@ function keyPressed() {
 
 let obbies = [];
 function newObbie() {
-    const obbyColors = ["purple", "pink", "black", "green", "blue", "tomato"];
-    let color = obbyColors[Math.floor(Math.random() * obbyColors.length)];
-    obbies.push(new Obstacle(color));
+    // const obbyColors = ["purple", "pink", "black", "green", "blue", "tomato"];
+    // let color = obbyColors[Math.floor(Math.random() * obbyColors.length)];
+    obbies.push(new Obstacle(slimeSprite));
 }
 
 // d = 68
@@ -90,9 +96,9 @@ function draw() {
                     playerPos.x,
                     playerPos.y,
                     playerPos.d,
-                    obbyPos.x,
-                    obbyPos.y,
-                    obbyPos.d
+                    obbyPos.x + 20,
+                    obbyPos.y + 20,
+                    obbyPos.d + 20
                 )
             ) {
                 noCanvas();
@@ -118,9 +124,9 @@ function draw() {
                     playerPos.x,
                     playerPos.y,
                     playerPos.d,
-                    obbyPos.x,
-                    obbyPos.y,
-                    obbyPos.d
+                    obbyPos.x + 20,
+                    obbyPos.y + 20,
+                    obbyPos.d + 20
                 )
             ) {
                 noCanvas();

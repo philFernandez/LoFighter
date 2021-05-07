@@ -1,4 +1,4 @@
-const GRAVITY = 0.3;
+const GRAVITY = 0.25;
 class Ground {
     constructor(groundHeight, color) {
         this.groundHeight = groundHeight;
@@ -53,25 +53,41 @@ class Mountain {
     }
 }
 class Obstacle {
-    constructor(color) {
-        this.color = color;
-        this.x = width;
+    constructor(sprite) {
+        console.log(sprite);
+        this.circleX = width;
         this.diameter = 90;
-        this.y = height - groundHeight - this.diameter / 2;
+        this.circleY = height - groundHeight - this.diameter / 2;
+        this.x = this.circleX - this.diameter / 2;
+        this.y = this.circleY - this.diameter / 2;
         this.velocityX = -5;
+        this.slime = new Sprite(
+            sprite.sheet,
+            sprite.data,
+            0.2,
+            this.x,
+            this.y,
+            this.diameter,
+            this.diameter
+        );
     }
 
     move() {
-        this.x -= 4;
+        this.x += this.velocityX;
+        this.slime.setX(this.x);
+        this.circleX += this.velocityX;
     }
 
     show() {
-        fill(this.color);
-        circle(this.x, this.y, this.diameter);
+        noFill();
+        // stroke("black");
+        circle(this.circleX, this.circleY, this.diameter);
+        this.slime.show();
+        this.slime.animate();
     }
 
     getPos() {
-        return { x: this.x, y: this.y, d: this.diameter };
+        return { x: this.circleX, y: this.circleY, d: this.diameter };
     }
 }
 
