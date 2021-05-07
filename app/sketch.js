@@ -16,12 +16,12 @@ function preload() {
     backingTrack = loadSound("../assets/sounds/backing.ogg");
     playerSprites = {
         run: {
-            sheet: loadImage("../assets/sprites/run/run.png"),
-            data: loadJSON("../assets/sprites/run/run.json"),
+            sheet: loadImage("../assets/sprites/player/run/run.png"),
+            data: loadJSON("../assets/sprites/player/run/run.json"),
         },
         idle: {
-            sheet: loadImage("../assets/sprites/idle/idle.png"),
-            data: loadJSON("../assets/sprites/idle/idle.json"),
+            sheet: loadImage("../assets/sprites/player/idle/idle.png"),
+            data: loadJSON("../assets/sprites/player/idle/idle.json"),
         },
     };
     cloudSprite = loadImage("../assets/sprites/clouds/clouds.png");
