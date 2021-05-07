@@ -6,6 +6,8 @@ let player;
 let gamePaused = false;
 let cloudSprite;
 let clouds;
+let mountainSprite;
+let mountain;
 let backingTrack;
 const gameOver = document.querySelector("div");
 
@@ -23,16 +25,16 @@ function preload() {
         },
     };
     cloudSprite = loadImage("../assets/sprites/clouds/clouds.png");
+    mountainSprite = loadImage("../assets/sprites/mountains/mtn1.png");
 }
 
 function setup() {
-    // console.log(backingTrack);
     createCanvas(window.innerWidth, window.innerHeight - 1);
-    // cnv.mousePressed(canvasPressed);
     ground = new Ground(groundHeight, "forestgreen");
     player = new Player(playerSprites);
     obby = new Obstacle("purple");
     clouds = new Clouds(cloudSprite);
+    mountain = new Mountain(mountainSprite);
 }
 
 function canvasPressed() {
@@ -70,6 +72,7 @@ function draw() {
     ground.show();
     counter++;
     let deadObbies = [];
+    mountain.show();
     // player is running
     if (keyIsDown(68)) {
         player.showRunning();
@@ -103,6 +106,7 @@ function draw() {
         });
         clouds.show();
         clouds.move(0.8);
+        mountain.move(0.2);
     } else {
         player.showIdle();
         obbies.forEach((obby) => {

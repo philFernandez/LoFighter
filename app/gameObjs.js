@@ -34,6 +34,24 @@ class Clouds {
         image(this.img, this.x, this.y);
     }
 }
+
+class Mountain {
+    constructor(mountainImg) {
+        this.img = mountainImg;
+        this.x = width - this.img.width;
+        this.y = height - this.img.height - groundHeight;
+    }
+    move(speed) {
+        this.x -= speed;
+        if (this.x < -this.img.width) {
+            this.x = width;
+        }
+    }
+
+    show() {
+        image(this.img, this.x, this.y);
+    }
+}
 class Obstacle {
     constructor(color) {
         this.color = color;
