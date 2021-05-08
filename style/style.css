@@ -6,7 +6,7 @@ body {
     background-color: peru;
 }
 
-div {
+div.game-over {
     display: none;
     flex-direction: column;
     justify-content: space-around;
@@ -14,9 +14,14 @@ div {
     font-family: 'Press Start 2P', cursive;
     height: 99vh;
     width: 100%;
-    color: white;
+    color: lightgray;
 }
 
-div h3 a {
-    color: greenyellow;
+div div h3 a {
+    /* color: greenyellow; */
+    color: rgb(42, 150, 108);
+}
+
+div div h4 {
+    color: rgb(173, 53, 53);
 }

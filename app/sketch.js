@@ -20,6 +20,8 @@ let slimeSprite;
 let playerPoints = 0;
 let obbies = [];
 const gameOver = document.querySelector("div");
+const finalPoints = document.querySelector("div > div > h4");
+console.log(finalPoints);
 
 function preload() {
     soundFormats("ogg", "wav");
@@ -143,6 +145,7 @@ function draw() {
                 noCanvas();
                 gameOver.style.display = "flex";
                 document.body.style.backgroundColor = "black";
+                finalPoints.innerHTML = `score ${playerPoints}`;
                 noLoop();
             }
             if (obbyPos.x < -40) {
@@ -171,6 +174,7 @@ function draw() {
                 noCanvas();
                 gameOver.style.display = "flex";
                 document.body.style.backgroundColor = "black";
+                finalPoints.innerHTML = `score ${playerPoints}`;
                 noLoop();
             }
         });
