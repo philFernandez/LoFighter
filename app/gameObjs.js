@@ -144,7 +144,7 @@ class Player {
 
     jump() {
         if (this.circleY === height - groundHeight - this.diameter / 2)
-            this.velocityY = -10;
+            this.velocityY = -11;
     }
 
     move() {
