@@ -15,14 +15,16 @@ let clouds;
 let mountainSprite;
 let mountain;
 let backingTrack;
+let plusOnePointSound;
 let slimeSprite;
 let playerPoints = 0;
 let obbies = [];
 const gameOver = document.querySelector("div");
 
 function preload() {
-    soundFormats("ogg");
+    soundFormats("ogg", "wav");
     backingTrack = loadSound("../assets/sounds/backing.ogg");
+    plusOnePointSound = loadSound("../assets/sounds/coins.wav");
     playerSprites = {
         run: {
             sheet: loadImage("../assets/sprites/player/run/run.png"),
@@ -47,10 +49,10 @@ function setup() {
     player = new Player(playerSprites);
     clouds = new Clouds(cloudSprite);
     mountain = new Mountain(mountainSprite);
-    masterVolume(0.2);
 }
 
 function canvasPressed() {
+    backingTrack.setVolume(0.1);
     backingTrack.loop();
 }
 
@@ -178,7 +180,7 @@ function draw() {
 
     if (obbies.length && obbies[0].getPos().x === player.getPos().x) {
         playerPoints++;
-        console.log(playerPoints);
+        plusOnePointSound.play();
     }
     drawHud();
 }
