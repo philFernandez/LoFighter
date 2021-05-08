@@ -139,6 +139,7 @@ function draw() {
         clouds.move(0.1);
     }
     player.move();
+    if (obbies.length) obbies[0].jump();
     // Remove obbies that are no longer on screen
     deadObbies.forEach((deadObby) => {
         obbies.splice(deadObby, 1);

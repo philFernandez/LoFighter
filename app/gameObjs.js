@@ -61,6 +61,7 @@ class Obstacle {
         this.x = this.circleX - this.diameter / 2;
         this.y = this.circleY - this.diameter / 2;
         this.velocityX = -5;
+        this.velocityY = 0;
         this.slime = new Sprite(
             sprite.sheet,
             sprite.data,
@@ -72,15 +73,31 @@ class Obstacle {
         );
     }
 
+    jump() {
+        if (this.circleY === height - groundHeight - this.diameter / 2)
+            this.velocityY = -10;
+    }
+
     move() {
         this.x += this.velocityX;
         this.slime.setX(this.x);
         this.circleX += this.velocityX;
+
+        this.y += this.velocityY;
+        this.circleY += this.velocityY;
+        this.velocityY += GRAVITY;
+        this.y = constrain(this.y, 0, height - groundHeight - this.diameter);
+        this.circleY = constrain(
+            this.circleY,
+            0,
+            height - groundHeight - this.diameter / 2
+        );
+        this.slime.setY(this.y);
     }
 
     show() {
         noFill();
-        // stroke("black");
+        stroke("black");
         circle(this.circleX, this.circleY, this.diameter);
         this.slime.show();
         this.slime.animate();
