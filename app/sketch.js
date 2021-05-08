@@ -11,6 +11,7 @@ let mountain;
 let backingTrack;
 let slimeSprite;
 let playerPoints = 0;
+let obbies = [];
 const gameOver = document.querySelector("div");
 
 function preload() {
@@ -64,10 +65,7 @@ function keyPressed() {
     }
 }
 
-let obbies = [];
 function newObbie() {
-    // const obbyColors = ["purple", "pink", "black", "green", "blue", "tomato"];
-    // let color = obbyColors[Math.floor(Math.random() * obbyColors.length)];
     obbies.push(new Obstacle(slimeSprite));
 }
 
