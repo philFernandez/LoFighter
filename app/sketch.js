@@ -1,3 +1,8 @@
+// rect(10, groundHeight - 10, 200, 50, 20);
+// fill("orange");
+// textSize(32);
+// text(`score: ${playerPoints}`, 20, groundHeight, 200, 50);
+
 const groundHeight = 60;
 let ground, runningPlayer, idlePlayer;
 let counter = 0;
@@ -39,13 +44,13 @@ function setup() {
     createCanvas(window.innerWidth, window.innerHeight - 1);
     ground = new Ground(groundHeight, "forestgreen");
     player = new Player(playerSprites);
-    // obby = new Obstacle(slimeSprite);
     clouds = new Clouds(cloudSprite);
     mountain = new Mountain(mountainSprite);
+    masterVolume(0.2);
 }
 
 function canvasPressed() {
-    backingTrack.play();
+    backingTrack.loop();
 }
 
 function keyPressed() {
@@ -148,4 +153,18 @@ function draw() {
         playerPoints++;
         console.log(playerPoints);
     }
+    fill("gray");
+    let rectWidth = 200;
+    let rectHeight = 70;
+    let hudOffset = 20;
+    rect(
+        window.innerWidth - rectWidth - hudOffset,
+        hudOffset,
+        rectWidth,
+        rectHeight,
+        20
+    );
+    fill("orange");
+    textSize(32);
+    text(`score: ${playerPoints}`, 20, groundHeight, 200, 50);
 }
