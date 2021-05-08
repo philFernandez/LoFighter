@@ -4,6 +4,7 @@
 // text(`score: ${playerPoints}`, 20, groundHeight, 200, 50);
 
 const groundHeight = 60;
+const obbieGrace = 20;
 let ground, runningPlayer, idlePlayer;
 let counter = 0;
 let playerSprites;
@@ -74,6 +75,32 @@ function newObbie() {
     obbies.push(new Obstacle(slimeSprite));
 }
 
+function drawHud() {
+    fill("gray");
+    let rectWidth = 200;
+    if (playerPoints > 9999) {
+        rectWidth = 250;
+    }
+    let rectHeight = 70;
+    let hudOffset = 20;
+    rect(
+        window.innerWidth - rectWidth - hudOffset,
+        hudOffset,
+        rectWidth,
+        rectHeight,
+        20
+    );
+    fill("orange");
+    textSize(32);
+    text(
+        `score: ${playerPoints}`,
+        window.innerWidth - rectWidth,
+        hudOffset * 2,
+        rectWidth,
+        rectHeight
+    );
+}
+
 // d = 68
 // a = 65
 function draw() {
@@ -99,9 +126,9 @@ function draw() {
                     playerPos.x,
                     playerPos.y,
                     playerPos.d,
-                    obbyPos.x + 20,
-                    obbyPos.y + 20,
-                    obbyPos.d + 20
+                    obbyPos.x + obbieGrace,
+                    obbyPos.y + obbieGrace,
+                    obbyPos.d + obbieGrace
                 )
             ) {
                 noCanvas();
@@ -127,9 +154,9 @@ function draw() {
                     playerPos.x,
                     playerPos.y,
                     playerPos.d,
-                    obbyPos.x + 20,
-                    obbyPos.y + 20,
-                    obbyPos.d + 20
+                    obbyPos.x + obbieGrace,
+                    obbyPos.y + obbieGrace,
+                    obbyPos.d + obbieGrace
                 )
             ) {
                 noCanvas();
@@ -153,18 +180,5 @@ function draw() {
         playerPoints++;
         console.log(playerPoints);
     }
-    fill("gray");
-    let rectWidth = 200;
-    let rectHeight = 70;
-    let hudOffset = 20;
-    rect(
-        window.innerWidth - rectWidth - hudOffset,
-        hudOffset,
-        rectWidth,
-        rectHeight,
-        20
-    );
-    fill("orange");
-    textSize(32);
-    text(`score: ${playerPoints}`, 20, groundHeight, 200, 50);
+    drawHud();
 }
