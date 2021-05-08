@@ -10,6 +10,7 @@ let mountainSprite;
 let mountain;
 let backingTrack;
 let slimeSprite;
+let playerPoints = 0;
 const gameOver = document.querySelector("div");
 
 function preload() {
@@ -40,7 +41,6 @@ function setup() {
     // obby = new Obstacle(slimeSprite);
     clouds = new Clouds(cloudSprite);
     mountain = new Mountain(mountainSprite);
-    console.log(slimeSprite);
 }
 
 function canvasPressed() {
@@ -145,4 +145,9 @@ function draw() {
     deadObbies.forEach((deadObby) => {
         obbies.splice(deadObby, 1);
     });
+
+    if (obbies.length && obbies[0].getPos().x === player.getPos().x) {
+        playerPoints++;
+        console.log(playerPoints);
+    }
 }

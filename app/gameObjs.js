@@ -54,7 +54,6 @@ class Mountain {
 }
 class Obstacle {
     constructor(sprite) {
-        console.log(sprite);
         this.circleX = width;
         this.diameter = 90;
         this.circleY = height - groundHeight - this.diameter / 2;
