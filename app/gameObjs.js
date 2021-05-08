@@ -97,7 +97,7 @@ class Obstacle {
 
     show() {
         noFill();
-        stroke("black");
+        // stroke("black");
         circle(this.circleX, this.circleY, this.diameter);
         this.slime.show();
         this.slime.animate();
