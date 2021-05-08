@@ -103,6 +103,13 @@ function drawHud() {
     );
 }
 
+function checkForPoint() {
+    if (obbies.length && obbies[0].getPos().x === player.getPos().x) {
+        playerPoints++;
+        plusOnePointSound.play();
+    }
+}
+
 // d = 68
 // a = 65
 function draw() {
@@ -178,9 +185,6 @@ function draw() {
         obbies.splice(deadObby, 1);
     });
 
-    if (obbies.length && obbies[0].getPos().x === player.getPos().x) {
-        playerPoints++;
-        plusOnePointSound.play();
-    }
+    checkForPoint();
     drawHud();
 }
