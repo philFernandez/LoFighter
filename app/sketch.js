@@ -58,7 +58,8 @@ function setup() {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     var database = firebase.database();
-    console.log(database);
+    var ref = database.ref("scores");
+    console.log(ref);
     createCanvas(window.innerWidth, window.innerHeight - 1);
     ground = new Ground(groundHeight, "forestgreen");
     player = new Player(playerSprites);
