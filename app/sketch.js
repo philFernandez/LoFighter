@@ -21,7 +21,6 @@ let playerPoints = 0;
 let obbies = [];
 const gameOver = document.querySelector("div");
 const finalPoints = document.querySelector("div > div > h4");
-console.log(finalPoints);
 
 function preload() {
     soundFormats("ogg", "wav");
@@ -46,6 +45,20 @@ function preload() {
 }
 
 function setup() {
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyCZqkyk1RHJ-yMJC2H1mHnBNhcB5yOi0aU",
+        authDomain: "lofighter.firebaseapp.com",
+        projectId: "lofighter",
+        storageBucket: "lofighter.appspot.com",
+        messagingSenderId: "679831163220",
+        databaseURL: "https://lofighter-default-rtdb.firebaseio.com/",
+        appId: "1:679831163220:web:cfb8d5a27807da9f71b8c1",
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
+    console.log(database);
     createCanvas(window.innerWidth, window.innerHeight - 1);
     ground = new Ground(groundHeight, "forestgreen");
     player = new Player(playerSprites);
