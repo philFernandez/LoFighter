@@ -4,6 +4,31 @@ body {
     margin: 0;
     padding: 0;
     background-color: peru;
+    /* background-color: black; */
+}
+
+input[type=text] {
+    width: 60%;
+    height: 1.5rem;
+    font-size: 1rem;
+    border: 4px dashed greenyellow;
+    border-radius: 4px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+button#submit-score,
+button#high-scores {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-family: 'Press Start 2P', cursive;
+}
+
+button#submit-score {
+    background-color: green;
+}
+
+button#high-scores {
+    background-color: yellow;
 }
 
 div.game-over {

@@ -21,6 +21,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-database.js"></script>
     <script defer
             src="./app/sketch.js"></script>
+
+    <!-- <script defer
+            src="./app/app.js"></script> -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -32,10 +35,21 @@
 
 <body>
     <div class="game-over">
-        <h1></h1>
+        <div align="center">
+            <h4>Score 8</h4>
+            <input type="text"
+                   name="name"
+                   id="name"
+                   maxlength="10"
+                   placeholder="name">
+            <br>
+            <button id="submit-score">Submit Score</button>
+            <br>
+            <button id="high-scores">High Scores</button>
+
+        </div>
         <h1>Game Over</h1>
         <div align="center">
-            <h4></h4>
             <h3><a href="javascript:window.location.reload()">Restart</a></h3>
         </div>
     </div>

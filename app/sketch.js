@@ -19,6 +19,7 @@ let plusOnePointSound;
 let slimeSprite;
 let playerPoints = 0;
 let obbies = [];
+let ref;
 const gameOver = document.querySelector("div");
 const finalPoints = document.querySelector("div > div > h4");
 
@@ -46,7 +47,7 @@ function preload() {
 
 function setup() {
     // Your web app's Firebase configuration
-    var firebaseConfig = {
+    const firebaseConfig = {
         apiKey: "AIzaSyCZqkyk1RHJ-yMJC2H1mHnBNhcB5yOi0aU",
         authDomain: "lofighter.firebaseapp.com",
         projectId: "lofighter",
@@ -57,13 +58,8 @@ function setup() {
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    var database = firebase.database();
-    var ref = database.ref("scores");
-    let data = {
-        name: "PEF",
-        score: 13,
-    };
-    ref.push(data);
+    const database = firebase.database();
+    ref = database.ref("scores");
     createCanvas(window.innerWidth, window.innerHeight - 1);
     ground = new Ground(groundHeight, "forestgreen");
     player = new Player(playerSprites);
@@ -123,6 +119,28 @@ function drawHud() {
     );
 }
 
+function saveScore() {
+    let playersName;
+    const playersInput = document.querySelector("input#name");
+    const submit = document.querySelector("button#submit-score");
+
+    submit.addEventListener("click", () => {
+        playersName = playersInput.value;
+        if (playersName.trim() === "") {
+            playersName = "j_doe";
+        } else {
+            playersName = playersName.replace(/ /g, "_");
+        }
+        playersInput.value = "";
+        let data = {
+            name: playersName,
+            score: playerPoints,
+        };
+        ref.push(data);
+        submit.disabled = true;
+    });
+}
+
 function checkForPoint() {
     if (obbies.length && obbies[0].getPos().x === player.getPos().x) {
         playerPoints++;
@@ -164,6 +182,7 @@ function draw() {
                 gameOver.style.display = "flex";
                 document.body.style.backgroundColor = "black";
                 finalPoints.innerHTML = `score ${playerPoints}`;
+                saveScore();
                 noLoop();
             }
             if (obbyPos.x < -40) {
@@ -193,6 +212,7 @@ function draw() {
                 gameOver.style.display = "flex";
                 document.body.style.backgroundColor = "black";
                 finalPoints.innerHTML = `score ${playerPoints}`;
+                saveScore();
                 noLoop();
             }
         });
