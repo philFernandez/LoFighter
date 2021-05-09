@@ -59,7 +59,11 @@ function setup() {
     firebase.initializeApp(firebaseConfig);
     var database = firebase.database();
     var ref = database.ref("scores");
-    console.log(ref);
+    let data = {
+        name: "PEF",
+        score: 13,
+    };
+    ref.push(data);
     createCanvas(window.innerWidth, window.innerHeight - 1);
     ground = new Ground(groundHeight, "forestgreen");
     player = new Player(playerSprites);
