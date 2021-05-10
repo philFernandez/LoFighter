@@ -139,6 +139,28 @@ function saveScore() {
         ref.push(data);
         submit.disabled = true;
     });
+    showHighScores();
+}
+function showHighScores() {
+    const showHighScores = document.querySelector("button#high-scores");
+    const scoresView = document.querySelector("div.scores");
+
+    showHighScores.addEventListener("click", () => {
+        ref.on(
+            "value",
+            (data) => {
+                Object.entries(data.val()).forEach(([_, value]) => {
+                    scoresView.innerHTML += `<div><h3>${value.name}</h3><h3>${value.score}</h3></div>`;
+                });
+            },
+            (error) => {
+                console.warn("ERROR!");
+                console.error(error);
+            }
+        );
+        gameOver.style.display = "none";
+        scoresView.style.display = "block";
+    });
 }
 
 function checkForPoint() {

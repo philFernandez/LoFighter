@@ -33,6 +33,7 @@ button#high-scores {
 
 div.game-over {
     display: none;
+    /* display: flex; */
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -42,11 +43,32 @@ div.game-over {
     color: lightgray;
 }
 
-div div h3 a {
-    /* color: greenyellow; */
+
+a {
     color: rgb(42, 150, 108);
 }
 
 div div h4 {
     color: rgb(173, 53, 53);
+}
+
+div.scores {
+    display: none;
+    /* display: block; */
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    color: white;
+}
+
+div.scores h1 {
+    text-decoration: underline;
+}
+
+div.scores div {
+    display: flex;
+    justify-content: center;
+}
+
+div.scores div h3 {
+    margin: 1rem;
 }
