@@ -20,7 +20,7 @@ let slimeSprite;
 let playerPoints = 0;
 let obbies = [];
 let ref;
-const gameOver = document.querySelector("div");
+const gameOverView = document.querySelector("div");
 const finalPoints = document.querySelector("div > div > h4");
 
 function preload() {
@@ -149,16 +149,18 @@ function showHighScores() {
         ref.on(
             "value",
             (data) => {
-                Object.entries(data.val()).forEach(([_, value]) => {
-                    scoresView.innerHTML += `<div><h3>${value.name}</h3><h3>${value.score}</h3></div>`;
-                });
+                Object.values(data.val())
+                    .sort((a, b) => b.score - a.score)
+                    .forEach((scoreEntry) => {
+                        scoresView.innerHTML += `<div><h3>${scoreEntry.name}</h3><h3>${scoreEntry.score}</h3></div>`;
+                    });
             },
             (error) => {
                 console.warn("ERROR!");
                 console.error(error);
             }
         );
-        gameOver.style.display = "none";
+        gameOverView.style.display = "none";
         scoresView.style.display = "block";
     });
 }
@@ -201,7 +203,7 @@ function draw() {
                 )
             ) {
                 noCanvas();
-                gameOver.style.display = "flex";
+                gameOverView.style.display = "flex";
                 document.body.style.backgroundColor = "black";
                 finalPoints.innerHTML = `score ${playerPoints}`;
                 saveScore();
@@ -231,7 +233,7 @@ function draw() {
                 )
             ) {
                 noCanvas();
-                gameOver.style.display = "flex";
+                gameOverView.style.display = "flex";
                 document.body.style.backgroundColor = "black";
                 finalPoints.innerHTML = `score ${playerPoints}`;
                 saveScore();
